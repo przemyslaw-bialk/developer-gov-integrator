@@ -22,7 +22,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${cormorant.variable} min-h-screen bg-bg font-sans text-text`}
       >
-        <div className="mx-auto min-h-screen w-full max-w-[1800px] px-2">
+        <div className="mx-auto min-h-screen w-full max-w-[1800px]">
           {children}
         </div>
       </body>

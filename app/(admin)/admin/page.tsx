@@ -1,5 +1,11 @@
+import AdminSidebar from "@/components/(admin)/sidebar/AdminSidebar";
+
 const AdminPage = () => {
-  return <div>admin page</div>;
+  return (
+    <>
+      <AdminSidebar />
+    </>
+  );
 };
 
 export default AdminPage;
