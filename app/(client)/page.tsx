@@ -1,13 +1,9 @@
-import dbConnect from "@/lib/server";
-
 const HomePage = async () => {
-  try {
-    await dbConnect();
-
-    return <h2>polaczono</h2>;
-  } catch {
-    return <h2>nie [polaczono]</h2>;
-  }
+  return (
+    <h2>
+      <p>page</p>
+    </h2>
+  );
 };
 
 export default HomePage;
