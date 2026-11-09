@@ -6,6 +6,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { BsBuildings } from "react-icons/bs";
 import { RxHome } from "react-icons/rx";
+import LogoutButton from "../logout/LogoutButton";
 
 type Props = {
   onNavigate: () => void;
@@ -58,6 +59,7 @@ const AdminSidebarLinks = ({ onNavigate }: Props) => {
           <span>Dodaj</span>
         </Link>
       </div>
+      <LogoutButton />
     </div>
   );
 };

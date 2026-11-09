@@ -6,8 +6,12 @@ import {
 const AuthenticationButtons = () => {
   return (
     <div className="flex gap-2">
-      <LoginLink className="">Logowanie</LoginLink>
-      <RegisterLink>Rejestracja</RegisterLink>
+      <LoginLink className="bg-primary rounded-sm text-surface px-3 py-1">
+        Logowanie
+      </LoginLink>
+      <RegisterLink className="bg-primary rounded-sm text-surface px-3 py-1">
+        Rejestracja
+      </RegisterLink>
     </div>
   );
 };

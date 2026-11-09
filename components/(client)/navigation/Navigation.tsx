@@ -1,5 +1,6 @@
 import Link from "next/link";
-import AuthenticationButtons from "../authentication/AuthenticationButtons";
+import { Suspense } from "react";
+import NavigationAuth from "./NavigationAuth";
 
 const Navigation = () => {
   return (
@@ -7,7 +8,9 @@ const Navigation = () => {
       <Link href="/admin" className="inline-block">
         Panel
       </Link>
-      <AuthenticationButtons />
+      <Suspense fallback={"loading"}>
+        <NavigationAuth />
+      </Suspense>
     </nav>
   );
 };
