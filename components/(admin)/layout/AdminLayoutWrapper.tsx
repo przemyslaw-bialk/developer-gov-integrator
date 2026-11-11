@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import AdminLayout from "./AdminLayout";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
@@ -6,10 +7,14 @@ const AdminLayoutWrapper = async ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { getUser } = getKindeServerSession();
+  const { getUser, getPermission } = getKindeServerSession();
   const user = await getUser();
+  const getUserRole = await getPermission("access:admin");
+  const isAdmin = getUserRole?.isGranted;
 
-  console.log("Kinde user:", user);
+  if (!isAdmin) {
+    redirect("/not-allowed");
+  }
 
   return (
     <AdminLayout firstName={user?.given_name ?? undefined}>
