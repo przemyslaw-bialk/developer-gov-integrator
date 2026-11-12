@@ -1,7 +1,9 @@
+import AddInvestment from "@/components/(admin)/investment/AddInvestment";
+
 const AddApartmentPage = () => {
   return (
     <div>
-      <h2>add apartment</h2>
+      <AddInvestment />
     </div>
   );
 };
