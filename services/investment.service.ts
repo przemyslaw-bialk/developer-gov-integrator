@@ -21,3 +21,15 @@ export const getUserInvestments = async (userId: string) => {
 
   return Investment.find({ userId });
 };
+
+export const deleteInvestment = async (
+  investmentId: string,
+  userId: string,
+) => {
+  await dbConnect();
+
+  return Investment.findOneAndDelete({
+    _id: investmentId,
+    userId,
+  });
+};

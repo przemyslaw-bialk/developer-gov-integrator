@@ -1,22 +1,15 @@
-import requireAdmin from "@/lib/auth/require-admin";
-import { getUserInvestments } from "@/services/investment.service";
-import { connection } from "next/server";
+import Spinner from "@/components/ui/Spinner";
+import { Suspense } from "react";
+import ApartmentsContent from "./ApartmentsContent";
 
-const ApartmentsPage = async () => {
-  await connection();
-  const user = await requireAdmin();
-
-  const investments = await getUserInvestments(user.id);
+const ApartmentsPage = () => {
   return (
     <div>
       <h1>Inwestycje</h1>
 
-      {investments.map((investment) => (
-        <div key={investment._id.toString()}>
-          <p>{investment.name}</p>
-          <p>{investment.price}</p>
-        </div>
-      ))}
+      <Suspense fallback={<Spinner />}>
+        <ApartmentsContent />
+      </Suspense>
     </div>
   );
 };
