@@ -3,7 +3,7 @@ type Props = {
 };
 
 const AdminSidebarUserGreetings = ({ firstName }: Props) => {
-  return <h2>Witaj {firstName}!</h2>;
+  return <h2 className="ml-2">Witaj {firstName}!</h2>;
 };
 
 export default AdminSidebarUserGreetings;

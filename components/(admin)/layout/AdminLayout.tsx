@@ -14,7 +14,7 @@ const AdminLayout = ({
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-[1800px] bg-bg">
-      <div className="flex">
+      <div className="flex items-start">
         <div
           className={`${isMenuOpen ? "block" : "hidden"} md:block w-full md:w-64`}
         >

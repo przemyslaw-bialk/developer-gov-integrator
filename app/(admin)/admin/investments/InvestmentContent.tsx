@@ -2,7 +2,7 @@ import { deleteInvestmentAction } from "@/actions/investment.actions";
 import requireAdmin from "@/lib/auth/require-admin";
 import { getUserInvestments } from "@/services/investment.service";
 
-const ApartmentsContent = async () => {
+const InvestmentContent = async () => {
   const user = await requireAdmin();
   const investments = await getUserInvestments(user.id);
 
@@ -26,4 +26,4 @@ const ApartmentsContent = async () => {
   );
 };
 
-export default ApartmentsContent;
+export default InvestmentContent;

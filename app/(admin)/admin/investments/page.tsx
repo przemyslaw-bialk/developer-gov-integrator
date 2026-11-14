@@ -1,17 +1,17 @@
 import Spinner from "@/components/ui/Spinner";
 import { Suspense } from "react";
-import ApartmentsContent from "./ApartmentsContent";
+import InvestmentContent from "./InvestmentContent";
 
-const ApartmentsPage = () => {
+const InvestmentPage = () => {
   return (
     <div>
       <h1>Inwestycje</h1>
 
       <Suspense fallback={<Spinner />}>
-        <ApartmentsContent />
+        <InvestmentContent />
       </Suspense>
     </div>
   );
 };
 
-export default ApartmentsPage;
+export default InvestmentPage;

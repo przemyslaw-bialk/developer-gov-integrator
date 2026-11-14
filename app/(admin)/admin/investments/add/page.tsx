@@ -1,9 +1,9 @@
-import AddInvestment from "@/components/(admin)/investment/AddInvestment";
+import InvestmentPicker from "@/components/(admin)/investment/InvestmentPicker";
 
 const AddApartmentPage = () => {
   return (
     <div>
-      <AddInvestment />
+      <InvestmentPicker />
     </div>
   );
 };

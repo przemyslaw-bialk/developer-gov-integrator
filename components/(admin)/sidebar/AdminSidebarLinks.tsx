@@ -8,6 +8,7 @@ import { BsBuildings } from "react-icons/bs";
 import { RxHome } from "react-icons/rx";
 import LogoutButton from "../logout/LogoutButton";
 import AdminSidebarUserGreetings from "./AdminSidebarGreetings";
+import Logo from "@/components/ui/Logo";
 
 type Props = {
   onNavigate: () => void;
@@ -18,7 +19,8 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col gap-2 w-full min-h-screen border-r border-gray-200 bg-surface">
+    <div className="flex flex-col gap-2 w-full min-h-screen border-r border-gray-200 bg-surface pb-4 px-2">
+      <Logo />
       <AdminSidebarUserGreetings firstName={firstName} />
       <div className="p-2 hover:bg-primary hover:text-white">
         <Link href="/" className="flex items-center gap-2" onClick={onNavigate}>
@@ -39,10 +41,10 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
         </Link>
       </div>
       <div
-        className={`p-2 hover:bg-primary hover:text-white ${pathname === "/admin/apartments" ? "bg-primary text-secondary" : "text-text"}`}
+        className={`p-2 hover:bg-primary hover:text-white ${pathname === "/admin/investments" ? "bg-primary text-secondary" : "text-text"}`}
       >
         <Link
-          href="/admin/apartments"
+          href="/admin/investments"
           className="flex items-center gap-2"
           onClick={onNavigate}
         >
@@ -51,10 +53,10 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
         </Link>
       </div>
       <div
-        className={`p-2 hover:bg-primary hover:text-white ${pathname === "/admin/apartments/add" ? "bg-primary text-secondary" : "text-text"}`}
+        className={`p-2 hover:bg-primary hover:text-white ${pathname.startsWith("/admin/investments/add") ? "bg-primary text-secondary" : "text-text"}`}
       >
         <Link
-          href="/admin/apartments/add"
+          href="/admin/investments/add"
           className="flex items-center gap-2"
           onClick={onNavigate}
         >
