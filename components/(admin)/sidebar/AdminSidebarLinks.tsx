@@ -6,6 +6,8 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { BsBuildings } from "react-icons/bs";
 import { RxHome } from "react-icons/rx";
+import { LuUserRoundCog } from "react-icons/lu";
+
 import LogoutButton from "../logout/LogoutButton";
 import AdminSidebarUserGreetings from "./AdminSidebarGreetings";
 import Logo from "@/components/ui/Logo";
@@ -62,6 +64,18 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
         >
           <MdOutlineLibraryAdd />
           <span>Dodaj</span>
+        </Link>
+      </div>
+      <div
+        className={`p-2 hover:bg-primary hover:text-white ${pathname.startsWith("/admin/profile") ? "bg-primary text-secondary" : "text-text"}`}
+      >
+        <Link
+          href="/admin/profile"
+          className="flex items-center gap-2"
+          onClick={onNavigate}
+        >
+          <LuUserRoundCog />
+          <span>Profil</span>
         </Link>
       </div>
       <LogoutButton />
