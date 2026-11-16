@@ -1,12 +1,12 @@
 import ProfileForm from "@/components/(admin)/profile/ProfileForm";
-import SectionHeader from "@/components/ui/SectionHeader";
+import Spinner from "@/components/ui/Spinner";
+import { Suspense } from "react";
 
 const ProfilePage = () => {
   return (
-    <div>
-      <SectionHeader>Ustawienia Profilu</SectionHeader>
+    <Suspense fallback={<Spinner />}>
       <ProfileForm />
-    </div>
+    </Suspense>
   );
 };
 

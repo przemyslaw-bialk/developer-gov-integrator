@@ -21,7 +21,7 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col gap-2 w-full min-h-screen border-r border-gray-200 bg-surface pb-4 px-2">
+    <div className="flex flex-col gap-2  min-h-screen border-r border-gray-200 bg-surface pb-4 px-2 fixed w-full md:w-[230px]">
       <Logo />
       <AdminSidebarUserGreetings firstName={firstName} />
       <div className="p-2 hover:bg-primary hover:text-white">

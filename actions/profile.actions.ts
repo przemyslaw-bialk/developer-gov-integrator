@@ -1,7 +1,11 @@
 "use server";
 
 import requireAdmin from "@/lib/auth/require-admin";
-import { createProfileInfo } from "@/services/profile.service";
+import {
+  createProfileInfo,
+  getUserProfileInfo,
+} from "@/services/profile.service";
+import { ProfileType } from "@/types/profile.types";
 import { revalidatePath } from "next/cache";
 
 export const createProfileInfoAction = async (formData: FormData) => {
@@ -47,3 +51,10 @@ export const createProfileInfoAction = async (formData: FormData) => {
 
   revalidatePath("/admin/profile");
 };
+
+export const getUserProfileInfoAction =
+  async (): Promise<ProfileType | null> => {
+    const user = await requireAdmin();
+
+    return await getUserProfileInfo(user.id);
+  };

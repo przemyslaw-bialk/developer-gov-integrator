@@ -6,7 +6,13 @@ type Props = {
 };
 
 const SectionHeader = ({ children, className }: Props) => {
-  return <h2 className={`text-2xl ${className}`}>{children}</h2>;
+  return (
+    <h2
+      className={`font-heading text-4xl font-semibold text-text"> ${className}`}
+    >
+      {children}
+    </h2>
+  );
 };
 
 export default SectionHeader;
