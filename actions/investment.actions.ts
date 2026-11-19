@@ -1,22 +1,49 @@
 "use server";
 
 import requireAdmin from "@/lib/auth/require-admin";
+import { InvestmentSchema, InvestmentState } from "@/schemas/investment.schema";
 import {
   createInvestment,
   deleteInvestment,
 } from "@/services/investment.service";
 import { revalidatePath } from "next/cache";
+import z from "zod";
 
-export const createInvestmentAction = async (formData: FormData) => {
+export const createInvestmentAction = async (
+  prevState: InvestmentState,
+  formData: FormData,
+): Promise<InvestmentState> => {
   const user = await requireAdmin();
 
-  const name = formData.get("name") as string;
-  const price = formData.get("price");
-  const parsedPrice = Number(price);
+  const validatedFields = InvestmentSchema.safeParse({
+    name: formData.get("name"),
+    price: formData.get("price"),
+  });
 
-  await createInvestment({ name, price: parsedPrice, userId: user.id });
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      message: "popraw błędy w formularzu!",
+      errors: z.flattenError(validatedFields.error).fieldErrors,
+    };
+  }
 
-  revalidatePath("/admin/investments");
+  const { name, price } = validatedFields.data;
+
+  try {
+    await createInvestment({ name, price, userId: user.id });
+    revalidatePath("/admin/investments");
+
+    return {
+      success: true,
+      message: "inwestycja dodana!",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: "Wystąpił błąd podczas zapisywania do bazy.",
+    };
+  }
 };
 
 export const deleteInvestmentAction = async (investmentId: string) => {

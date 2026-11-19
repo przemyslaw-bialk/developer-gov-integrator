@@ -1,4 +1,5 @@
 import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Toaster } from "sonner"; // 1. Dodaj ten import
 import "./globals.css";
 
 const inter = Inter({
@@ -25,6 +26,7 @@ export default function RootLayout({
         <div className="mx-auto min-h-screen w-full max-w-[1800px]">
           {children}
         </div>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
