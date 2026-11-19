@@ -25,7 +25,7 @@ export const deleteInvestmentAction = async (investmentId: string) => {
   const deletedInvestment = await deleteInvestment(investmentId, user.id);
 
   if (!deletedInvestment) {
-    throw new Error("Nie znaleziono inwestycji lub brak uprawnień.");
+    throw new Error("Nie znaleziono inwestycji lub brak uprawnień...");
   }
 
   revalidatePath("/admin/investments");
