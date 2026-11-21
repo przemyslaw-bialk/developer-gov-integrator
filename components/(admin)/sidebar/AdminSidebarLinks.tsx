@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 
 import Link from "next/link";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { MdOutlineLibraryAdd } from "react-icons/md";
+import { MdOutlineLibraryAdd, MdOutlineAddHome } from "react-icons/md";
 import { BsBuildings } from "react-icons/bs";
 import { RxHome } from "react-icons/rx";
 import { LuUserRoundCog } from "react-icons/lu";
@@ -76,6 +76,18 @@ const AdminSidebarLinks = ({ onNavigate, firstName }: Props) => {
         >
           <LuUserRoundCog />
           <span>Profil</span>
+        </Link>
+      </div>
+      <div
+        className={`p-2 hover:bg-primary hover:text-white ${pathname.startsWith("/admin/apartments") ? "bg-primary text-secondary" : "text-text"}`}
+      >
+        <Link
+          href="/admin/apartments"
+          className="flex items-center gap-2"
+          onClick={onNavigate}
+        >
+          <MdOutlineAddHome />
+          <span>Mieszkania</span>
         </Link>
       </div>
       <LogoutButton />
