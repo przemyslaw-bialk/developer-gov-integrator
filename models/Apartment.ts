@@ -16,6 +16,9 @@ const apartmentSchema = new Schema({
   status: {
     enum: ["AVAILABLE", "RESERVED", "SOLD"],
   },
+  createdBy: {
+    type: String,
+  },
 });
 
 export default mongoose.models.Apartment ||

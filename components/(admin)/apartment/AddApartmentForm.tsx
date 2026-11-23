@@ -1,28 +1,31 @@
 "use client";
+import { addApartmentAction } from "@/actions/apartment.actions";
+import {
+  APARTMENT_STATUSES,
+  ApartmentFormData,
+  ApartmentSchema,
+} from "@/schemas/apartment.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import z from "zod";
-
-// this way zod takes values as literals - not as string
-const APARTMENT_STATUSES = ["AVAILABLE", "RESERVED", "SOLD"] as const;
-
-const ApartmentSchema = z.object({
-  apartmentNumber: z.string().nonempty().uppercase(),
-  priceOfApartment: z.coerce.number().positive(),
-  pricePerMeterSquare: z.coerce.number().positive(),
-  status: z.enum(APARTMENT_STATUSES, { message: "wybierz status!" }),
-});
-type ApartmentFormData = z.infer<typeof ApartmentSchema>;
+import { toast } from "sonner";
 
 const AddApartmentForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(ApartmentSchema) });
 
-  const onSubmit = (data: ApartmentFormData) => {
-    console.log(data);
+  const onSubmit = async (data: ApartmentFormData) => {
+    const result = await addApartmentAction(data);
+
+    if (result.success) {
+      toast.success("dodano!");
+      reset();
+    } else {
+      toast.error(result.message ?? "Nie udalo sie!");
+    }
   };
 
   return (
