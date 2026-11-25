@@ -1,14 +1,12 @@
-import AddApartmentForm from "@/components/(admin)/apartment/AddApartmentForm";
-import SectionHeader from "@/components/ui/SectionHeader";
-import SectionSubtittle from "@/components/ui/SectionSubtittle";
+import { Suspense } from "react";
+import ApartmentsContent from "./ApartmentsContent";
+import Spinner from "@/components/ui/Spinner";
 
 const ApartmentsPage = () => {
   return (
-    <div>
-      <SectionHeader>Mieszkania</SectionHeader>
-      <SectionSubtittle>Zarządzanie mieszkaniami</SectionSubtittle>
-      <AddApartmentForm />
-    </div>
+    <Suspense fallback={<Spinner />}>
+      <ApartmentsContent />
+    </Suspense>
   );
 };
 

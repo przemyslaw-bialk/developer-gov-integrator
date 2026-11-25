@@ -9,7 +9,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
-const AddApartmentForm = () => {
+type Props = {
+  investments: {
+    _id: string;
+    name: string;
+  }[];
+};
+
+const AddApartmentForm = ({ investments }: Props) => {
+  console.log(investments);
   const {
     register,
     handleSubmit,

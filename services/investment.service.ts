@@ -17,9 +17,14 @@ export const createInvestment = async (data: InvestmentData) => {
 };
 
 export const getUserInvestments = async (userId: string) => {
-  await dbConnect();
+  await connectDB();
 
-  return Investment.find({ userId });
+  const investments = await Investment.find({ userId }).select("name").lean();
+
+  return investments.map((investment) => ({
+    _id: investment._id.toString(),
+    name: investment.name,
+  }));
 };
 
 export const deleteInvestment = async (

@@ -13,6 +13,12 @@ const investmentSchema = new Schema({
     type: String,
     required: true,
   },
+  apartments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Apartment",
+    },
+  ],
 });
 
 export default mongoose.models.Investment ||
