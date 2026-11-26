@@ -19,6 +19,10 @@ const apartmentSchema = new Schema({
   createdBy: {
     type: String,
   },
+  investmentId: {
+    type: Schema.Types.ObjectId,
+    ref: "Investment",
+  },
 });
 
 export default mongoose.models.Apartment ||

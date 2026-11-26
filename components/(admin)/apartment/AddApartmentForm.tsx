@@ -138,6 +138,21 @@ const AddApartmentForm = ({ investments }: Props) => {
             {errors.status?.message}
           </p>
         </div>
+        <div className="flex flex-col gap-2">
+          <label htmlFor="investmentId">Przypisz do inwestycji</label>
+
+          <select {...register("investmentId")} id="investmentId">
+            {investments.map((investment) => (
+              <option key={investment._id} value={investment._id}>
+                {investment.name}
+              </option>
+            ))}
+          </select>
+
+          <p className="min-h-5 text-sm text-red-500">
+            {errors.investmentId?.message}
+          </p>
+        </div>
 
         <div className="flex flex-col-reverse gap-3 border-t border-border pt-5 sm:flex-row sm:justify-end">
           <button
