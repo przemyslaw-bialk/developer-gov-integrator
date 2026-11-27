@@ -38,3 +38,9 @@ export const deleteInvestment = async (
     userId,
   });
 };
+
+export const getInvestmentById = async (id: string, userId: string) => {
+  await dbConnect();
+
+  return Investment.findById({ _id: id, userId }).lean();
+};

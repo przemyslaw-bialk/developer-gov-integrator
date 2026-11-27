@@ -14,7 +14,9 @@ const apartmentSchema = new Schema({
     type: String,
   },
   status: {
+    type: String,
     enum: ["AVAILABLE", "RESERVED", "SOLD"],
+    default: "AVAILABLE",
   },
   createdBy: {
     type: String,
