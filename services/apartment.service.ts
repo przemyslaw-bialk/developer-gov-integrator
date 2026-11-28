@@ -17,5 +17,11 @@ export const createApartment = async (data: ApartmentDataWithUserId) => {
 export const getInvestmentApartments = async (investmentId: string) => {
   await connectDB();
 
-  return await Apartment.find({ investmentId }).lean();
+  const apartments = await Apartment.find({ investmentId }).lean();
+
+  return apartments.map((apartment) => ({
+    ...apartment,
+    _id: apartment._id.toString(),
+    investmentId: apartment.investmentId.toString(),
+  }));
 };
